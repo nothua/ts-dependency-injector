@@ -1,4 +1,4 @@
-# TS Service Locator
+# TS Dependency Injector
 
 The `ts-dependency-injector` package provides a lightweight dependency injection container that allows you to register and resolve dependencies in your application. It supports both lazy and non-lazy dependencies, as well as resolving chain dependencies.
 
