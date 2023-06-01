@@ -1,0 +1,35 @@
+{
+  "name": "ts-dependency-injector",
+  "description": "A lightweight dependency injection container that allows you to register and resolve dependencies in your application. It supports both lazy and non-lazy dependencies, as well as resolving chain dependencies.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harushiki/ts-dependency-injector.git"
+  },
+  "keywords": [],
+  "author": "Baal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harushiki/ts-dependency-injector/issues"
+  },
+  "homepage": "https://github.com/harushiki/ts-service-locator#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.2",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.8",
+    "ts-jest": "^29.1.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.0.4"
+  }
+}
