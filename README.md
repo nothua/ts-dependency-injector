@@ -1,6 +1,6 @@
 # TS Service Locator
 
-The `ts-service-locator` package provides a lightweight dependency injection container that allows you to register and resolve dependencies in your application. It supports both lazy and non-lazy dependencies, as well as resolving chain dependencies.
+The `ts-dependency-injector` package provides a lightweight dependency injection container that allows you to register and resolve dependencies in your application. It supports both lazy and non-lazy dependencies, as well as resolving chain dependencies.
 
 ## Features
 
@@ -13,28 +13,28 @@ The `ts-service-locator` package provides a lightweight dependency injection con
 
 ## Installation
 
-You can install the `ts-service-locator` package using a package manager like npm or yarn. Open your terminal and run the following command:
+You can install the `ts-dependency-injector` package using a package manager like npm or yarn. Open your terminal and run the following command:
 
 ```bash
-npm install ts-service-locator
+npm install ts-dependency-injector
 ```
 
 or
 
 ```bash
-yarn add ts-service-locator
+yarn add ts-dependency-injector
 ```
 
 ## Usage
 
-To use the `ts-service-locator` package in your application, follow these steps:
+To use the `ts-dependency-injector` package in your application, follow these steps:
 
 ### 1. Import the ServiceLocator class
 
 Import the `ServiceLocator` class into your file:
 
 ```ts
-import { ServiceLocator } from 'ts-service-locator';
+import { ServiceLocator } from 'ts-dependency-injector';
 ```
 
 ### 2. Register Dependencies
@@ -61,7 +61,7 @@ const dependencyA = ServiceLocator.getInstance().resolve<DependencyA>('Dependenc
 
 ### 4. Resolve Chain Dependencies
 
-The `ts-service-locator` package supports resolving chain dependencies. Register the dependencies in the correct order.
+The `ts-dependency-injector` package supports resolving chain dependencies. Register the dependencies in the correct order.
 
 ```ts
 ServiceLocator.getInstance().registerSingleton('DependencyA', () => new DependencyA());
@@ -81,10 +81,10 @@ ServiceLocator.getInstance().reset();
 
 ## Example
 
-Here's an example showcasing the usage of `ts-service-locator`:
+Here's an example showcasing the usage of `ts-dependency-injector`:
 
 ```ts
-import { ServiceLocator } from 'ts-service-locator';
+import { ServiceLocator } from 'ts-dependency-injector';
 
 class DependencyA {
   public name = 'DependencyA';
