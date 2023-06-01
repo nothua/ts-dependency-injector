@@ -5,7 +5,7 @@ The `ts-dependency-injector` package provides a lightweight dependency injection
 ## Features
 
 - **Dependency Registration**: Register both lazy and non-lazy dependencies using the register method.
-- **Singleton Support**: Register and resolve non-lazy singletons using the registerSingleton method.
+- **Singleton Support**: Register and resolve non-lazy singletons using the register method.
 - **Chain Dependency Resolution**: Resolve dependencies that have chain dependencies by registering them in the correct order.
 - **Lazy Loading**: Register lazy dependencies using the register method with the lazy parameter set to true.
 - **Generic Support**: Use generics to specify the type of the resolved dependency when calling the resolve method.
@@ -42,7 +42,7 @@ import { ServiceLocator } from 'ts-dependency-injector';
 To register a dependency, use the `register` method of the `ServiceLocator` instance. You can register both lazy and non-lazy dependencies.
 
 ```ts
-ServiceLocator.getInstance().registerSingleton('DependencyA', () => new DependencyA());
+ServiceLocator.getInstance().register('DependencyA', () => new DependencyA());
 ```
 
 For lazy dependencies, set the `lazy` parameter to `true`:
@@ -64,7 +64,7 @@ const dependencyA = ServiceLocator.getInstance().resolve<DependencyA>('Dependenc
 The `ts-dependency-injector` package supports resolving chain dependencies. Register the dependencies in the correct order.
 
 ```ts
-ServiceLocator.getInstance().registerSingleton('DependencyA', () => new DependencyA());
+ServiceLocator.getInstance().register('DependencyA', () => new DependencyA());
 ServiceLocator.getInstance().register(
   'DependencyB',
   () => new DependencyB(ServiceLocator.getInstance().resolve<DependencyA>('DependencyA')),
@@ -97,7 +97,7 @@ class DependencyB {
 
 const serviceLocator = ServiceLocator.getInstance();
 
-serviceLocator.registerSingleton('DependencyA', () => new DependencyA());
+serviceLocator.register('DependencyA', () => new DependencyA());
 serviceLocator.register('DependencyB', () => new DependencyB(serviceLocator.resolve<DependencyA>('DependencyA')));
 
 const dependencyB = serviceLocator.resolve<DependencyB>('DependencyB');
