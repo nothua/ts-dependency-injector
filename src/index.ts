@@ -1,3 +1,5 @@
-'use strict';
+'use strict'
 
-exports.ServiceLocator = require('./ServiceLocator');
+import ServiceLocator from "./ServiceLocator";
+
+export { ServiceLocator };
