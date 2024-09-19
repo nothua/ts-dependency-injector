@@ -4,13 +4,17 @@ class DependencyA {
   public name = 'DependencyA';
 }
 
+// tslint:disable-next-line:max-classes-per-file
 class DependencyB {
   constructor(public dependencyA: DependencyA) {}
+
   public name = 'DependencyB';
 }
 
+// tslint:disable-next-line:max-classes-per-file
 class DependencyC {
   constructor(public dependencyB: DependencyB) {}
+
   public name = 'DependencyC';
 }
 
@@ -31,7 +35,14 @@ describe('ServiceLocator', () => {
   });
 
   it('should register and resolve lazy dependencies', () => {
-    ServiceLocator.getInstance().register('DependencyA', () => new DependencyA(), true);
+    ServiceLocator.getInstance().register(
+      'DependencyA',
+      () => new DependencyA(),
+      true,
+      async (object) => {
+        // Do nothing
+      },
+    );
 
     const dependencyA1 = ServiceLocator.getInstance().resolve<DependencyA>('DependencyA');
     const dependencyA2 = ServiceLocator.getInstance().resolve<DependencyA>('DependencyA');
@@ -57,5 +68,26 @@ describe('ServiceLocator', () => {
     expect(dependencyC).toBeInstanceOf(DependencyC);
     expect(dependencyC.dependencyB).toBeInstanceOf(DependencyB);
     expect(dependencyC.dependencyB.dependencyA).toBeInstanceOf(DependencyA);
+  });
+
+  it('should dispose the dependencies successfully', async () => {
+    let disposed = false;
+    ServiceLocator.getInstance().register(
+      'DependencyA',
+      () => new DependencyA(),
+      false,
+      async () => {
+        disposed = true;
+      },
+    );
+
+    const dependencyA = ServiceLocator.getInstance().resolve<DependencyA>('DependencyA');
+    expect(disposed).toBe(false);
+    expect(dependencyA).not.toBeNull();
+    expect(dependencyA).toBeInstanceOf(DependencyA);
+
+    await ServiceLocator.getInstance().reset();
+    expect(disposed).toBe(true);
+    expect(() => ServiceLocator.getInstance().resolve('DependencyA')).toThrow();
   });
 });
