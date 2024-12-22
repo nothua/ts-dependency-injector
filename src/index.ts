@@ -1,5 +1,5 @@
-'use strict'
+'use strict';
 
-import ServiceLocator from "./ServiceLocator";
+import { ServiceLocator } from './ServiceLocator';
 
 export { ServiceLocator };

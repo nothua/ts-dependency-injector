@@ -37,12 +37,13 @@ Import the `ServiceLocator` class into your file:
 import { ServiceLocator } from 'ts-dependency-injector';
 ```
 
-### 2. Register Dependencies
+### 2. Register Singleton or Factory Dependencies
 
-To register a dependency, use the `register` method of the `ServiceLocator` instance. You can register both lazy and non-lazy dependencies.
+To register a dependency, use the `register` method of the `ServiceLocator` instance. You may register a singleton both lazy and non-lazy dependencies. Or if you need a dependency which generates new instance of an object, register a factory dependency.
 
 ```ts
-ServiceLocator.getInstance().register('DependencyA', () => new DependencyA());
+ServiceLocator.getInstance().register('DependencyA', () => new DependencyA(), false, (e) => {});
+ServiceLocator.getInstance().registerFactory('DependencyA', () => new DependencyA());
 ```
 
 For lazy dependencies, set the `lazy` parameter to `true`:
