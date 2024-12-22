@@ -1,7 +1,7 @@
 {
   "name": "ts-dependency-injector",
   "description": "A lightweight dependency injection container that allows you to register and resolve dependencies in your application. It supports both lazy and non-lazy dependencies, as well as resolving chain dependencies.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "files": [
     "lib/**/*"
